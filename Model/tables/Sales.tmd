@@ -23,6 +23,11 @@ table Sales
 		lineageTag: 3af62837-82a2-488d-a5fe-a5ebf2732590
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+	
+	measure 'PY Sales' = Calculate(Sum(Sales[Revenue]), sameperiodelastyear(Calendar[Date]))
+		lineageTag: PY_Sales
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column CountryName
 		dataType: String
