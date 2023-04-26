@@ -1,0 +1,25 @@
+{
+  "name": "Products-3095686a-ec37-4bcb-ae5c-fe7510899cdf",
+  "mode": "import",
+  "source": {
+    "type": "m",
+    "expression": [
+      "let",
+      "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\nicholas.etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\bi_dimensions.xlsx\"), null, true),",
+      "    Product_Table_Table = Source{[Item=\"Product_Table\",Kind=\"Table\"]}[Data],",
+      "    #\"Fractionner la colonne par délimiteur\" = Table.SplitColumn(Product_Table_Table, \"Product\", Splitter.SplitTextByDelimiter(\"|\", QuoteStyle.Csv), {\"Product.1\", \"Product.2\"}),",
+      "    #\"Colonnes renommées\" = Table.RenameColumns(#\"Fractionner la colonne par délimiteur\",{{\"Product.1\", \"Products\"}, {\"Product.2\", \"Segments\"}}),",
+      "    #\"Rempli vers le bas\" = Table.FillDown(#\"Colonnes renommées\",{\"Category\"}),",
+      "    #\"Texte inséré après le délimiteur\" = Table.AddColumn(#\"Rempli vers le bas\", \"Texte après le délimiteur\", each Text.AfterDelimiter([Price], \" \"), type text),",
+      "    #\"Arrondi inséré\" = Table.AddColumn(#\"Texte inséré après le délimiteur\", \"Arrondi\", each Number.Round([Texte après le délimiteur], 2), type number),",
+      "    #\"Colonnes supprimées\" = Table.RemoveColumns(#\"Arrondi inséré\",{\"Arrondi\"}),",
+      "    #\"Type modifié\" = Table.TransformColumnTypes(#\"Colonnes supprimées\",{{\"Texte après le délimiteur\", type number}}),",
+      "    Arrondi = Table.TransformColumns(#\"Type modifié\",{{\"Texte après le délimiteur\", each Number.Round(_, 2), type number}}),",
+      "    #\"Renommage colonne UnitPrice\" = Table.RenameColumns(Arrondi,{{\"Texte après le délimiteur\", \"UnitPrice\"}}),",
+      "    #\"Colonne Price supprimée\" = Table.RemoveColumns(#\"Renommage colonne UnitPrice\",{\"Price\"}),",
+      "    #\"Type modifié1\" = Table.TransformColumnTypes(#\"Colonne Price supprimée\",{{\"ProductID\", Int64.Type}, {\"ManufacturerID\", Int64.Type}, {\"Category\", type text}})",
+      "in",
+      "    #\"Type modifié1\""
+    ]
+  }
+}

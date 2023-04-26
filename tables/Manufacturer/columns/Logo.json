@@ -1,0 +1,13 @@
+{
+  "name": "Logo",
+  "dataType": "string",
+  "sourceColumn": "Logo",
+  "lineageTag": "25d0aa2a-e1a6-42fa-8f05-1b1d44f1e40e",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

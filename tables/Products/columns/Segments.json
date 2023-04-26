@@ -1,0 +1,13 @@
+{
+  "name": "Segments",
+  "dataType": "string",
+  "sourceColumn": "Segments",
+  "lineageTag": "e4e0a30f-7336-4e12-9859-55515555d6ba",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Transformer l'exemple de fichier",
+  "kind": "m",
+  "expression": [
+    "let",
+    "    Source = Csv.Document(Paramètre1,[Delimiter=\";\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+    "    #\"En-têtes promus\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+    "in",
+    "    #\"En-têtes promus\""
+  ],
+  "queryGroup": "Transformer le fichier à partir de Sales",
+  "lineageTag": "2f4b36d0-35b9-444b-9dcd-6895f3cef4b2",
+  "annotations": [
+    {
+      "name": "PBI_ResultType",
+      "value": "Table"
+    }
+  ]
+}

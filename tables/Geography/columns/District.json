@@ -1,0 +1,13 @@
+{
+  "name": "District",
+  "dataType": "string",
+  "sourceColumn": "District",
+  "lineageTag": "d44805d3-fd65-4491-a585-8ec0484bf8ac",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

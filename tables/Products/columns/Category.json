@@ -1,0 +1,13 @@
+{
+  "name": "Category",
+  "dataType": "string",
+  "sourceColumn": "Category",
+  "lineageTag": "23479cac-c192-469f-a2cc-60083cee324d",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Geography",
+  "lineageTag": "0c78e4ee-6c9c-43e8-9544-2f5541933f69",
+  "annotations": [
+    {
+      "name": "PBI_NavigationStepName",
+      "value": "Navigation"
+    },
+    {
+      "name": "PBI_ResultType",
+      "value": "Table"
+    }
+  ]
+}

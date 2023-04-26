@@ -1,0 +1,23 @@
+{
+  "name": "Exemple de fichier",
+  "kind": "m",
+  "expression": [
+    "let",
+    "    Source = Folder.Files(\"C:\\Users\\nicholas.etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\Sales\"),",
+    "    #\"C:\\Users\\nicholas etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\Sales\\_Australia csv\" = Source{[#\"Folder Path\"=\"C:\\Users\\nicholas.etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\Sales\\\",Name=\"Australia.csv\"]}[Content]",
+    "in",
+    "    #\"C:\\Users\\nicholas etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\Sales\\_Australia csv\""
+  ],
+  "queryGroup": "Transformer le fichier à partir de Sales\\Requêtes d'assistance",
+  "lineageTag": "0f7c137f-e06d-4936-983f-112db8ef00a3",
+  "annotations": [
+    {
+      "name": "PBI_NavigationStepName",
+      "value": "Navigation"
+    },
+    {
+      "name": "PBI_ResultType",
+      "value": "Binary"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Sales-d022e069-65b5-4934-9eda-0df695efa8c3",
+  "mode": "import",
+  "source": {
+    "type": "m",
+    "expression": [
+      "let",
+      "    Source = Folder.Files(\"C:\\Users\\nicholas.etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\Sales\"),",
+      "    #\"Fichiers masqués filtrés1\" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),",
+      "    #\"Appeler une fonction personnalisée1\" = Table.AddColumn(#\"Fichiers masqués filtrés1\", \"Transformer le fichier\", each #\"Transformer le fichier\"([Content])),",
+      "    #\"Colonnes renommées1\" = Table.RenameColumns(#\"Appeler une fonction personnalisée1\", {\"Name\", \"Source.Name\"}),",
+      "    #\"Autres colonnes supprimées1\" = Table.SelectColumns(#\"Colonnes renommées1\", {\"Source.Name\", \"Transformer le fichier\"}),",
+      "    #\"Colonne de tables développée1\" = Table.ExpandTableColumn(#\"Autres colonnes supprimées1\", \"Transformer le fichier\", Table.ColumnNames(#\"Transformer le fichier\"(#\"Exemple de fichier\"))),",
+      "    #\"Colonne conditionnelle ajoutée\" = Table.AddColumn(#\"Colonne de tables développée1\", \"CountryName\", each if [Source.Name] = \"USsales.csv\" then \"USA\" else [Country]),",
+      "    #\"Colonnes supprimées\" = Table.RemoveColumns(#\"Colonne conditionnelle ajoutée\",{\"Country\", \"Source.Name\"}),",
+      "    #\"Type modifié\" = Table.TransformColumnTypes(#\"Colonnes supprimées\",{{\"CountryName\", type text}, {\"Revenue\", type number}, {\"Units\", Int64.Type}, {\"Zip\", type text}, {\"Date\", type date}, {\"ProductID\", Int64.Type}})",
+      "in",
+      "    #\"Type modifié\""
+    ]
+  }
+}

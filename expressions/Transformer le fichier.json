@@ -1,0 +1,27 @@
+{
+  "name": "Transformer le fichier",
+  "kind": "m",
+  "expression": [
+    "let",
+    "    Source = (Paramètre1) => let",
+    "        Source = Csv.Document(Paramètre1,[Delimiter=\";\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+    "        #\"En-têtes promus\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+    "    in",
+    "        #\"En-têtes promus\"",
+    "in",
+    "    Source"
+  ],
+  "queryGroup": "Transformer le fichier à partir de Sales\\Requêtes d'assistance",
+  "mAttributes": "[ FunctionQueryBinding = \"{\"\"exemplarFormulaName\"\":\"\"Transformer l\\u0027exemple de fichier\"\"}\" ]",
+  "lineageTag": "bc1cd264-3344-4b51-8545-69157945cc67",
+  "annotations": [
+    {
+      "name": "PBI_NavigationStepName",
+      "value": "Navigation"
+    },
+    {
+      "name": "PBI_ResultType",
+      "value": "Function"
+    }
+  ]
+}

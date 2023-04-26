@@ -1,0 +1,7 @@
+{
+  "name": "adc823ae-3afc-430c-82f6-32082399f2c6",
+  "fromTable": "Sales",
+  "fromColumn": "Zip-Country-Key",
+  "toTable": "Geography",
+  "toColumn": "Zip-Country-Key"
+}

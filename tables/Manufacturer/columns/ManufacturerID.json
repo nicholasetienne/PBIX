@@ -1,0 +1,14 @@
+{
+  "name": "ManufacturerID",
+  "dataType": "int64",
+  "sourceColumn": "ManufacturerID",
+  "formatString": "0",
+  "lineageTag": "810ce23f-a705-477e-b9f1-0d7e3af0df38",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

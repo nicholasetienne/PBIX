@@ -1,0 +1,8 @@
+{
+  "name": "Calendar-820d9a0e-1514-41a6-bc7a-d441e5ba23dd",
+  "mode": "import",
+  "source": {
+    "type": "calculated",
+    "expression": "CALENDARAUTO()"
+  }
+}

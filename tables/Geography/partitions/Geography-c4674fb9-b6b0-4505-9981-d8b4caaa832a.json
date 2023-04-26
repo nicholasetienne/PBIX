@@ -1,0 +1,18 @@
+{
+  "name": "Geography-c4674fb9-b6b0-4505-9981-d8b4caaa832a",
+  "mode": "import",
+  "source": {
+    "type": "m",
+    "expression": [
+      "let",
+      "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\nicholas.etienne\\Documents\\Formation\\Transavia\\02 - Data\\02 - Data\\bi_dimensions.xlsx\"), null, true),",
+      "    geo_Sheet = Source{[Item=\"geo\",Kind=\"Sheet\"]}[Data],",
+      "    #\"En-têtes promus\" = Table.PromoteHeaders(geo_Sheet, [PromoteAllScalars=true]),",
+      "    #\"Premières lignes supprimées\" = Table.Skip(#\"En-têtes promus\",2),",
+      "    #\"En-têtes promus1\" = Table.PromoteHeaders(#\"Premières lignes supprimées\", [PromoteAllScalars=true]),",
+      "    #\"Type modifié1\" = Table.TransformColumnTypes(#\"En-têtes promus1\",{{\"Zip\", type text}, {\"City\", type text}, {\"State\", type text}, {\"Region\", type text}, {\"District\", type text}, {\"Country\", type text}, {\"Zip-Country-Key\", type text}})",
+      "in",
+      "    #\"Type modifié1\""
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "CountryName",
+  "dataType": "string",
+  "sourceColumn": "CountryName",
+  "lineageTag": "54da94bb-af4c-4bd9-91d6-52d49fe44af0",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

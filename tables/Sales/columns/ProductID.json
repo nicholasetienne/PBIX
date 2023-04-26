@@ -1,0 +1,14 @@
+{
+  "name": "ProductID",
+  "dataType": "int64",
+  "sourceColumn": "ProductID",
+  "formatString": "0",
+  "lineageTag": "c09839e4-5b24-4171-b51e-c736e259a0e8",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

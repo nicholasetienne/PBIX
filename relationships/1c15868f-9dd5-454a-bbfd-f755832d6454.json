@@ -1,0 +1,7 @@
+{
+  "name": "1c15868f-9dd5-454a-bbfd-f755832d6454",
+  "fromTable": "Sales",
+  "fromColumn": "ProductID",
+  "toTable": "Products",
+  "toColumn": "ProductID"
+}

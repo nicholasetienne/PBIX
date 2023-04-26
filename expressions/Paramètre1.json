@@ -1,0 +1,17 @@
+{
+  "name": "Paramètre1",
+  "kind": "m",
+  "expression": "#\"Exemple de fichier\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Exemple de fichier\", Type=\"Binary\", IsParameterQueryRequired=true]",
+  "queryGroup": "Transformer le fichier à partir de Sales\\Requêtes d'assistance",
+  "lineageTag": "81b5c49f-1aa3-437f-88b8-a40027328340",
+  "annotations": [
+    {
+      "name": "PBI_NavigationStepName",
+      "value": "Navigation"
+    },
+    {
+      "name": "PBI_ResultType",
+      "value": "Binary"
+    }
+  ]
+}

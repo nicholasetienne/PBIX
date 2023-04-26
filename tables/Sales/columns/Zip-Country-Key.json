@@ -1,0 +1,15 @@
+{
+  "type": "calculated",
+  "name": "Zip-Country-Key",
+  "dataType": "string",
+  "isDataTypeInferred": true,
+  "expression": "Sales[Zip] & \"-\" & Sales[CountryName]",
+  "lineageTag": "6737181c-2b2d-462e-b2d5-ec9df05d353f",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

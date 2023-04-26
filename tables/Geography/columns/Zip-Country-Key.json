@@ -1,0 +1,13 @@
+{
+  "name": "Zip-Country-Key",
+  "dataType": "string",
+  "sourceColumn": "Zip-Country-Key",
+  "lineageTag": "9a656bee-2882-4678-8a77-21b8c6203b1e",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}

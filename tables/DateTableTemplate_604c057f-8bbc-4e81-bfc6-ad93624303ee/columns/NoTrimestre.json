@@ -1,0 +1,21 @@
+{
+  "type": "calculated",
+  "name": "NoTrimestre",
+  "dataType": "int64",
+  "isDataTypeInferred": true,
+  "isHidden": true,
+  "expression": "INT(([NoMois] + 2) / 3)",
+  "lineageTag": "7d111382-8d70-421c-b7e2-ddcfac25a86d",
+  "dataCategory": "QuarterOfYear",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "User"
+    },
+    {
+      "name": "TemplateId",
+      "value": "QuarterNumber"
+    }
+  ]
+}

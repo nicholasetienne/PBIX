@@ -1,0 +1,7 @@
+{
+  "name": "4e0270c8-5b44-46f8-9bd4-780d35d87e89",
+  "fromTable": "Products",
+  "fromColumn": "ManufacturerID",
+  "toTable": "Manufacturer",
+  "toColumn": "ManufacturerID"
+}

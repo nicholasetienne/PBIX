@@ -1,0 +1,11 @@
+{
+  "name": "CY Sales",
+  "expression": "Sum(Sales[Revenue])",
+  "lineageTag": "3af62837-82a2-488d-a5fe-a5ebf2732590",
+  "annotations": [
+    {
+      "name": "PBI_FormatHint",
+      "value": "{\"isGeneralNumber\":true}"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Products",
+  "dataType": "string",
+  "sourceColumn": "Products",
+  "lineageTag": "0bb829e9-a72e-4d1d-94ce-6dfe70dbbccb",
+  "summarizeBy": "none",
+  "annotations": [
+    {
+      "name": "SummarizationSetBy",
+      "value": "Automatic"
+    }
+  ]
+}
