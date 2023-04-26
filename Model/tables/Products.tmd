@@ -1,0 +1,87 @@
+table Products
+	lineageTag: 45ef01e2-f959-45c4-8575-37aa579623f7
+	ordinal: 6
+
+	partition 'Products-3095686a-ec37-4bcb-ae5c-fe7510899cdf' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Excel.Workbook(File.Contents("C:\Users\nicholas.etienne\Documents\Formation\Transavia\02 - Data\02 - Data\bi_dimensions.xlsx"), null, true),
+			    Product_Table_Table = Source{[Item="Product_Table",Kind="Table"]}[Data],
+			    #"Fractionner la colonne par délimiteur" = Table.SplitColumn(Product_Table_Table, "Product", Splitter.SplitTextByDelimiter("|", QuoteStyle.Csv), {"Product.1", "Product.2"}),
+			    #"Colonnes renommées" = Table.RenameColumns(#"Fractionner la colonne par délimiteur",{{"Product.1", "Products"}, {"Product.2", "Segments"}}),
+			    #"Rempli vers le bas" = Table.FillDown(#"Colonnes renommées",{"Category"}),
+			    #"Texte inséré après le délimiteur" = Table.AddColumn(#"Rempli vers le bas", "Texte après le délimiteur", each Text.AfterDelimiter([Price], " "), type text),
+			    #"Arrondi inséré" = Table.AddColumn(#"Texte inséré après le délimiteur", "Arrondi", each Number.Round([Texte après le délimiteur], 2), type number),
+			    #"Colonnes supprimées" = Table.RemoveColumns(#"Arrondi inséré",{"Arrondi"}),
+			    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"Texte après le délimiteur", type number}}),
+			    Arrondi = Table.TransformColumns(#"Type modifié",{{"Texte après le délimiteur", each Number.Round(_, 2), type number}}),
+			    #"Renommage colonne UnitPrice" = Table.RenameColumns(Arrondi,{{"Texte après le délimiteur", "UnitPrice"}}),
+			    #"Colonne Price supprimée" = Table.RemoveColumns(#"Renommage colonne UnitPrice",{"Price"}),
+			    #"Type modifié1" = Table.TransformColumnTypes(#"Colonne Price supprimée",{{"ProductID", Int64.Type}, {"ManufacturerID", Int64.Type}, {"Category", type text}})
+			in
+			    #"Type modifié1"
+
+
+	column Category
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 23479cac-c192-469f-a2cc-60083cee324d
+		sourceColumn: Category
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ManufacturerID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 072becff-5871-4092-ad0c-326dc9c2da19
+		sourceColumn: ManufacturerID
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: cd017805-1453-45a8-9866-9835dabf3a8c
+		sourceColumn: ProductID
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Products
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0bb829e9-a72e-4d1d-94ce-6dfe70dbbccb
+		sourceColumn: Products
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segments
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e4e0a30f-7336-4e12-9859-55515555d6ba
+		sourceColumn: Segments
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 8562157d-4d72-4899-8167-1f5fe5225642
+		sourceColumn: UnitPrice
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,51 @@
+table Manufacturer
+	lineageTag: 9dff66fc-c098-440c-8e2e-d014faa418de
+	ordinal: 5
+
+	partition 'Manufacturer-365c2b98-e912-4fdb-b5a4-f398a947096c' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Excel.Workbook(File.Contents("C:\Users\nicholas.etienne\Documents\Formation\Transavia\02 - Data\02 - Data\bi_dimensions.xlsx"), null, true),
+			    manufacturer_Sheet = Source{[Item="manufacturer",Kind="Sheet"]}[Data],
+			    #"Dernières lignes supprimées" = Table.RemoveLastN(manufacturer_Sheet,3),
+			    #"Table transposée" = Table.Transpose(#"Dernières lignes supprimées"),
+			    #"En-têtes promus1" = Table.PromoteHeaders(#"Table transposée", [PromoteAllScalars=true]),
+			    #"Type modifié1" = Table.TransformColumnTypes(#"En-têtes promus1",{{"ManufacturerID", Int64.Type}, {"Manufacturer", type text}, {"Logo", type text}}),
+			    #"Colonnes supprimées" = Table.RemoveColumns(#"Type modifié1",{"Column1"})
+			in
+			    #"Colonnes supprimées"
+
+
+	column Logo
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 25d0aa2a-e1a6-42fa-8f05-1b1d44f1e40e
+		sourceColumn: Logo
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2e823cac-7625-4e75-aa5e-a2fc25963b13
+		sourceColumn: Manufacturer
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column ManufacturerID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 810ce23f-a705-477e-b9f1-0d7e3af0df38
+		sourceColumn: ManufacturerID
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

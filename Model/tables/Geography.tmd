@@ -1,0 +1,85 @@
+table Geography
+	lineageTag: 0c78e4ee-6c9c-43e8-9544-2f5541933f69
+	ordinal: 3
+
+	partition 'Geography-c4674fb9-b6b0-4505-9981-d8b4caaa832a' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Excel.Workbook(File.Contents("C:\Users\nicholas.etienne\Documents\Formation\Transavia\02 - Data\02 - Data\bi_dimensions.xlsx"), null, true),
+			    geo_Sheet = Source{[Item="geo",Kind="Sheet"]}[Data],
+			    #"En-têtes promus" = Table.PromoteHeaders(geo_Sheet, [PromoteAllScalars=true]),
+			    #"Premières lignes supprimées" = Table.Skip(#"En-têtes promus",2),
+			    #"En-têtes promus1" = Table.PromoteHeaders(#"Premières lignes supprimées", [PromoteAllScalars=true]),
+			    #"Type modifié1" = Table.TransformColumnTypes(#"En-têtes promus1",{{"Zip", type text}, {"City", type text}, {"State", type text}, {"Region", type text}, {"District", type text}, {"Country", type text}, {"Zip-Country-Key", type text}})
+			in
+			    #"Type modifié1"
+
+
+	column City
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 211b78c9-84a8-4e41-b13a-b3e4f6048196
+		sourceColumn: City
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 247c3eb4-248d-4547-85c7-7d29f7ed6cb5
+		sourceColumn: Country
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column District
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d44805d3-fd65-4491-a585-8ec0484bf8ac
+		sourceColumn: District
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bab33562-cd0a-444a-86ac-973bca69a83d
+		sourceColumn: Region
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 141b587b-f533-4fed-84a8-d937a96da576
+		sourceColumn: State
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip-Country-Key'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9a656bee-2882-4678-8a77-21b8c6203b1e
+		sourceColumn: Zip-Country-Key
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zip
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f7d74a8c-54f7-4a12-a2cc-027b92d541a3
+		sourceColumn: Zip
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,26 @@
+model Model
+	compatibilityLevel: 1550
+	culture: fr-FR
+	dataAccessOptions:
+		legacyRedirects
+		returnErrorValuesAsNull
+	defaultPowerBIDataSourceVersion: PowerBI_V3
+	ID: c0b5b9d3-6ce9-4eaa-a75d-c1566f0bab88
+	sourceQueryCulture: fr-FR
+
+queryGroup 'Transformer le fichier à partir de Sales'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transformer le fichier à partir de Sales\Requêtes d''assistance'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["Products","Geography","Manufacturer","Sales","Paramètre1","Transformer l'exemple de fichier","Exemple de fichier","Transformer le fichier"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.117.6916.2 (Main)
+
+annotation TabularEditor_SerializeOptions = {"IgnoreInferredObjects":true,"IgnoreInferredProperties":true,"IgnoreTimestamps":true,"SplitMultilineStrings":true,"PrefixFilenames":false,"LocalTranslations":false,"LocalPerspectives":false,"LocalRelationships":false,"Levels":["Data Sources","Shared Expressions","Perspectives","Relationships","Roles","Tables","Tables/Columns","Tables/Hierarchies","Tables/Measures","Tables/Partitions","Tables/Calculation Items","Translations"]}
+

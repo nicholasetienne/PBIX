@@ -1,0 +1,98 @@
+table Sales
+	lineageTag: 9978b03f-a01e-4b20-a32b-8866aeb07baa
+	ordinal: 7
+
+	partition 'Sales-d022e069-65b5-4934-9eda-0df695efa8c3' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Folder.Files("C:\Users\nicholas.etienne\Documents\Formation\Transavia\02 - Data\02 - Data\Sales"),
+			    #"Fichiers masqués filtrés1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+			    #"Appeler une fonction personnalisée1" = Table.AddColumn(#"Fichiers masqués filtrés1", "Transformer le fichier", each #"Transformer le fichier"([Content])),
+			    #"Colonnes renommées1" = Table.RenameColumns(#"Appeler une fonction personnalisée1", {"Name", "Source.Name"}),
+			    #"Autres colonnes supprimées1" = Table.SelectColumns(#"Colonnes renommées1", {"Source.Name", "Transformer le fichier"}),
+			    #"Colonne de tables développée1" = Table.ExpandTableColumn(#"Autres colonnes supprimées1", "Transformer le fichier", Table.ColumnNames(#"Transformer le fichier"(#"Exemple de fichier"))),
+			    #"Colonne conditionnelle ajoutée" = Table.AddColumn(#"Colonne de tables développée1", "CountryName", each if [Source.Name] = "USsales.csv" then "USA" else [Country]),
+			    #"Colonnes supprimées" = Table.RemoveColumns(#"Colonne conditionnelle ajoutée",{"Country", "Source.Name"}),
+			    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"CountryName", type text}, {"Revenue", type number}, {"Units", Int64.Type}, {"Zip", type text}, {"Date", type date}, {"ProductID", Int64.Type}})
+			in
+			    #"Type modifié"
+
+
+	measure 'CY Sales' = Sum(Sales[Revenue])
+		lineageTag: 3af62837-82a2-488d-a5fe-a5ebf2732590
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CountryName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 54da94bb-af4c-4bd9-91d6-52d49fe44af0
+		sourceColumn: CountryName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: aa728e67-af02-44ad-838c-9e922787489a
+		sourceColumn: Date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ProductID
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: c09839e4-5b24-4171-b51e-c736e259a0e8
+		sourceColumn: ProductID
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 4ea33238-3955-4100-a312-4304841f22f7
+		sourceColumn: Revenue
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Units
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 8b070624-233a-4246-86ea-914d4e5df9b7
+		sourceColumn: Units
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip-Country-Key' = Sales[Zip] & "-" & Sales[CountryName]
+		dataType: String
+		lineageTag: 6737181c-2b2d-462e-b2d5-ec9df05d353f
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zip
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d2ed590f-1c4a-41b3-80db-f2f1e79d8359
+		sourceColumn: Zip
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
